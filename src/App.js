@@ -4,18 +4,30 @@ import { useState } from "react";
 
 function App() {
 
-  // useState
-  const [inputValue, setInputValue] = useState("");
+  const [ todoList, setTodoList ] = useState([]);
+  const [ newTask, setNewTask ] = useState("");
 
-  // setting the value 
-  const handleInputChange = (event) => {
-    setInputValue(event.target.value);
-  };
+  const handleChange = (event) => {
+    setNewTask(event.target.value);
+  }
+
+  // Adding task 
+  const addTask = () => {
+    const newTodoList = [...todoList, newTask];
+    setTodoList(newTodoList);
+  }
 
   return (
     <div className="App">
-      <input type="text" onChange={handleInputChange} />
-      {inputValue}
+      <div className="addTask">
+        <input onChange={handleChange}/>
+        <button onClick={addTask}>Add Task</button>
+      </div>
+      <div className="list">
+        {todoList.map((task) => {
+          return <h1> {task} </h1>
+        })}
+      </div>
     </div>
   );
 }
