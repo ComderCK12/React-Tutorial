@@ -14,7 +14,8 @@ function App() {
   const addTask = () => {
     const task = {
       id: todoList.length === 0 ? 1 : todoList[todoList.length - 1].id + 1,    // Taking the id of last element for new task
-      taskName: newTask
+      taskName: newTask,
+      completed: false,
     }
     const newTodoList = [...todoList, task];
     setTodoList(newTodoList);
@@ -41,6 +42,20 @@ function App() {
 
   }
 
+  // Update
+  const updateTask = (id) => {
+    setTodoList(
+      todoList.map((task) => {
+          if(task.id === id) {
+            return {...task, completed: true};
+          }
+          else {
+            return task;
+          }
+      })
+    )
+  }
+
   return (
     <div className="App">
       <div className="addTask">
@@ -51,8 +66,11 @@ function App() {
         {todoList.map((task) => {
           return (
             <div>
-              <h1> {task.taskName} </h1>
+              {task.completed === true ? <h1> {task.taskName} DONE ! </h1> : <h3> {task.taskName} </h3>}
+              {/* <h1> {task.completed} </h1> */}
+              <button onClick={() => updateTask(task.id)}>Completed</button>
               <button onClick={() => deleteTask(task.id)}>Delete</button>
+              <h1>------------------------------------------</h1>
             </div>
           );
         })}
