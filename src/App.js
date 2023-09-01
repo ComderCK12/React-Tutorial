@@ -1,34 +1,29 @@
 import "./App.css";
-import { User } from "./components/User";
+// import { User } from "./components/User";
+import { useState } from "react";
+
 
 function App() {
-  const users = [
-    { name: "Jordan", age: 24 },
-    { name: "LeBron", age: 23 },
-    { name: "Carl", age: 45 },
-  ];
+
+  // the initial state (age) set to 0, where age is a variable and setAge is a function
+  const [age, setAge] = useState(0);
+
+  const increaseAge = () => {
+    setAge(age+1);
+  }
+
+  const decreaseAge = () => {
+    setAge(age-1);
+  }
 
   return (
     <div className="App">
-      {users.map((user, key) => {
-        return (
-          <div>
-            <User name= {user.name} age= {user.age}/>   
-          </div>
-        );
-      })}
+      <button onClick={decreaseAge}>decreaseAge</button>
+      {age}
+      <button onClick={increaseAge}>Increase</button>
     </div>
   );
 }
 
-// Instead of doing this, i.e. creating components here only, we can create a components folder and create components there and import them here 
-
-// const User = (props) => {
-//   return (
-//     <div>
-//       {props.name} {props.age}
-//     </div>
-//   );
-// };
 
 export default App;
