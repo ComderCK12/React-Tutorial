@@ -18,7 +18,7 @@ function App() {
 
   return (
     <div className="App">
-      <button onClick={decreaseAge}>decreaseAge</button>
+      <button onClick={decreaseAge}>Decrease</button>
       {age}
       <button onClick={increaseAge}>Increase</button>
     </div>
