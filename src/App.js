@@ -1,22 +1,34 @@
 import "./App.css";
+import { User } from "./components/User";
 
 function App() {
-  const age = 8;
-  const isGreen = true;
-
-  // if(age >= 18) {
-  //   return <h1>Above provided age</h1>
-  // }
-  // else {
-  //   return <div className="App">Under age</div>
-  // }
+  const users = [
+    { name: "Jordan", age: 24 },
+    { name: "LeBron", age: 23 },
+    { name: "Carl", age: 45 },
+  ];
 
   return (
     <div className="App">
-      {age > 18 ? <h1>Above age</h1> : <h1>Under age</h1>}
-      <h1 style={{ color: isGreen ? "green" : "red" }}>Color</h1>
+      {users.map((user, key) => {
+        return (
+          <div>
+            <User name= {user.name} age= {user.age}/>   
+          </div>
+        );
+      })}
     </div>
   );
 }
+
+// Instead of doing this, i.e. creating components here only, we can create a components folder and create components there and import them here 
+
+// const User = (props) => {
+//   return (
+//     <div>
+//       {props.name} {props.age}
+//     </div>
+//   );
+// };
 
 export default App;
