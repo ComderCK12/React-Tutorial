@@ -1,23 +1,22 @@
-import './App.css';
+import "./App.css";
 
 function App() {
+  const age = 8;
+  const isGreen = true;
+
+  // if(age >= 18) {
+  //   return <h1>Above provided age</h1>
+  // }
+  // else {
+  //   return <div className="App">Under age</div>
+  // }
+
   return (
     <div className="App">
-      <Job name="Chirag" age={21} email="chirag@email.com" />
-      <Job name="Pratham" age={21} email="pratham@email.com" />
-      <Job name="rushil" age={21} email="rushil@email.com" />
+      {age > 18 ? <h1>Above age</h1> : <h1>Under age</h1>}
+      <h1 style={{ color: isGreen ? "green" : "red" }}>Color</h1>
     </div>
   );
 }
-
-const Job = (props) => {
-  return (
-    <div>
-      <h1>{props.name}</h1>
-      <h1>{props.age}</h1>
-      <h1>{props.email}</h1>
-    </div>
-  );
-};
 
 export default App;
